@@ -1,8 +1,8 @@
-DROP TABLE visits_attractions;
-DROP TABLE visits_cities;
+-- DROP TABLE visits_attractions;
+-- DROP TABLE visits_cities;
 DROP TABLE visits_countries;
-DROP TABLE attractions;
-DROP TABLE cities;
+-- DROP TABLE attractions;
+-- DROP TABLE cities;
 DROP TABLE countries;
 DROP TABLE users;
 
@@ -17,19 +17,19 @@ CREATE TABLE countries (
     category VARCHAR(255)
 );
 
-CREATE TABLE cities (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    country_id INT REFERENCES countries(id)
-);
+-- CREATE TABLE cities (
+--     id SERIAL PRIMARY KEY,
+--     name VARCHAR(255),
+--     country_id INT REFERENCES countries(id)
+-- );
 
-CREATE TABLE attractions (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    country_id INT REFERENCES countries(id),
-    city_id INT REFERENCES cities(id)
-    attraction_cat VARCHAR(255)
-);
+-- CREATE TABLE attractions (
+--     id SERIAL PRIMARY KEY,
+--     name VARCHAR(255),
+--     country_id INT REFERENCES countries(id),
+--     city_id INT REFERENCES cities(id)
+--     attraction_cat VARCHAR(255)
+-- );
 
 CREATE TABLE visits_country(
     id SERIAL PRIMARY KEY,
@@ -38,16 +38,16 @@ CREATE TABLE visits_country(
     review TEXT
 );
 
-CREATE TABLE visits_city (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
-    review TEXT
-);
+-- CREATE TABLE visits_city (
+--     id SERIAL PRIMARY KEY,
+--     user_id INT REFERENCES users(id) ON DELETE CASCADE,
+--     city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
+--     review TEXT
+-- );
 
-CREATE TABLE visits_attraction (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    attraction_id INT NOT NULL REFERENCES attractions(id) ON DELETE CASCADE,
-    review TEXT
-);
+-- CREATE TABLE visits_attraction (
+--     id SERIAL PRIMARY KEY,
+--     user_id INT REFERENCES users(id) ON DELETE CASCADE,
+--     attraction_id INT NOT NULL REFERENCES attractions(id) ON DELETE CASCADE,
+--     review TEXT
+-- );

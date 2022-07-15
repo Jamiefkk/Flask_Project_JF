@@ -16,12 +16,6 @@ user_repository.delete_all()
 user1 = User('Samwise Gamgee')
 user_repository.save(user1)
 
-user2 = User('Frodo Baggins')
-user_repository.save(user2)
-
-user3 = User('Gollum')
-user_repository.save(user3)
-
 country1 = Country("Ireland", "Europe")
 country_repository.save(country1)
 
