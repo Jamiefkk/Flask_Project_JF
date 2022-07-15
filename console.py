@@ -3,13 +3,17 @@ import pdb
 from models.city import City
 from models.country import Country
 from models.user import User
+from models.visits_city import VisitsCity
 from models.visits_country import VisitsCountry
 
 import repositories.user_repository as user_repository
 import repositories.country_repositiory as country_repository
 import repositories.visits_country_repositiory as visits_country_repository
+import repositories.visits_city_repository as visits_city_respository
+import repositories.city_repository as city_repository
 
-# visit_repository.delete_all()
+visits_city_respository.delete_all()
+visits_country_repository.delete_all()
 country_repository.delete_all()
 user_repository.delete_all()
 
@@ -19,7 +23,13 @@ user_repository.save(user1)
 country1 = Country("Ireland", "Europe")
 country_repository.save(country1)
 
+city1 = City("Kilkenny", country1)
+city_repository.save(city1)
+
 visit1 = VisitsCountry(user1, country1, '5 stars')
 visits_country_repository.save(visit1)
+
+visit2 = VisitsCity(user1, city1, '6 stars')
+visits_city_respository.save(visit2)
 
 pdb.set_trace()

@@ -1,5 +1,5 @@
-from models.visits_country import VisitsCountry
-from models.country import Country
+from models.visits_city import VisitsCity
+from models.city import City
 from models.user import User
 
 # import repositories.user_repository as user_respository
@@ -7,12 +7,12 @@ from models.user import User
 from db.run_sql import run_sql
 
 def save(visit):
-    sql = "INSERT INTO visits_country ( user_id, country_id, review) VALUES ( %s, %s, %s) RETURNING id"
-    values = [visit.user.id, visit.country.id, visit.review]
+    sql = "INSERT INTO visits_city ( user_id, city_id, review) VALUES ( %s, %s, %s) RETURNING id"
+    values = [visit.user.id, visit.city.id, visit.review]
     results = run_sql( sql, values )
     visit.id = results[0]['id']
     return visit
 
 def delete_all():
-    sql = "DELETE FROM visits_country"
+    sql = "DELETE FROM visits_city"
     run_sql(sql)
