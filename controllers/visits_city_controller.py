@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from models.city import City
 from models.visits_city import VisitsCity
 from models.visits_country import VisitsCountry
 from models.visits_attraction import VisitsAttraction
@@ -17,3 +18,18 @@ visit_cities_blueprint = Blueprint("cities", __name__)
 def cities():
     cities = city_repository.select_all()
     return render_template("cities/index.html", cities = cities)
+
+@visit_cities_blueprint.route("/cities/new", methods = ["GET"])
+def new_city():
+    users = user_repository.select_all()
+    countries = country_repository.select_all()
+    return render_template("cities/new.html", countries = countries, users = users)
+
+@visit_cities_blueprint.route("/cities",  methods=['POST'])
+def create_city():
+    city_name = request.form['city_name']
+    country = request.form['country']
+    city_country = country_repository.select(country)
+    city = City(city_name, city_country)
+    city_repository.save(city)
+    return redirect('/cities')

@@ -9,11 +9,11 @@
     <th></th>
     <th>Category</th>
   </tr>
-  {% for attraction in attractions %}
+  {% for country in countries %}
   <tr>
-    <td><a href="/attractions/{{ attraction.id }}"> {{attraction.name}} </a></td>
+    <td><a href="/countries/{{ country.id }}"> {{country.name}} </a></td>
     <td>|</td>
-    <td>{{ attraction.attraction_cat }}</td>
+    <td>{{ country.category }}</td>
   </tr>
   {% endfor %}
 </table>

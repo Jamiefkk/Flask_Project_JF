@@ -23,3 +23,13 @@ def select_all():
         location = Country(row['name'], row['category'], row['id'])
         locations.append(location)
     return locations
+
+def select(id):
+    country = None
+    sql = "SELECT * FROM countries WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)
+    if result:
+        row = result[0]
+        country = Country(row['name'], row['category'], row['id'])
+    return country

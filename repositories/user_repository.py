@@ -45,14 +45,3 @@ def locations_countries(user):
         locations.append(location)
 
     return locations
-
-def select_all():
-    locations = []
-
-    sql = "SELECT * FROM countries"
-    results = run_sql(sql)
-
-    for row in results:
-        location = Country(row['name'], row['category'], row['id'])
-        locations.append(location)
-    return locations
