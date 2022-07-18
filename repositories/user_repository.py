@@ -10,22 +10,23 @@ def save(user):
     user.id = results[0]['id']
     return user
 
-# def select_all():
-#     users = []
+def select_all():
+    users = []
 
-#     sql = "SELECT * FROM users"
-#     results = run_sql(sql)
-#     for row in results:
-#         user = User(row['name'], row['id'])
-#         users.append(user)
-#     return users
+    sql = "SELECT * FROM users"
+    results = run_sql(sql)
+    for row in results:
+        user = User(row['name'], row['id'])
+        users.append(user)
+    return users
 
 
-# def select(id):
-#     user = None
-#     sql = "SELECT * FROM users WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
+def select(id):
+    user = None
+    sql = "SELECT * FROM users WHERE id = %s"
+    values = [id]
+    user = run_sql(sql, values)
+    return user
 
 #     # checking if the list returned by `run_sql(sql, values)` is empty. Empty lists are 'fasly' 
 #     # Could alternativly have..

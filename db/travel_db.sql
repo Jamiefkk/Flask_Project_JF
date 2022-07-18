@@ -1,7 +1,7 @@
--- DROP TABLE visits_attractions;
-DROP TABLE visits_cities;
-DROP TABLE visits_countries;
--- DROP TABLE attractions;
+DROP TABLE visits_attraction;
+DROP TABLE visits_city;
+DROP TABLE visits_country;
+DROP TABLE attractions;
 DROP TABLE cities;
 DROP TABLE countries;
 DROP TABLE users;

@@ -7,12 +7,12 @@ from models.user import User
 from db.run_sql import run_sql
 
 def save(visit):
-    sql = "INSERT INTO visits_attraction ( user_id, country_id, city_id, review) VALUES ( %s, %s, %s, %s) RETURNING id"
-    values = [visit.user.id, visit.city.id, visit.review]
+    sql = "INSERT INTO visits_attraction ( user_id, attraction_id, review) VALUES ( %s, %s, %s) RETURNING id"
+    values = [visit.user.id, visit.attraction.id, visit.review]
     results = run_sql( sql, values )
     visit.id = results[0]['id']
     return visit
 
 def delete_all():
-    sql = "DELETE FROM visits_city"
+    sql = "DELETE FROM visits_attraction"
     run_sql(sql)
