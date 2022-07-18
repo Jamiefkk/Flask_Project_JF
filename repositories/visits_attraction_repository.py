@@ -2,8 +2,8 @@ from models.visits_attraction import VisitsAttraction
 from models.attraction import Attraction
 from models.user import User
 
-# import repositories.user_repository as user_respository
-# import repositories.country_repositiory as country_respository
+import repositories.user_repository as user_respository
+import repositories.attraction_repository as attraction_respository
 from db.run_sql import run_sql
 
 def save(visit):
@@ -16,3 +16,16 @@ def save(visit):
 def delete_all():
     sql = "DELETE FROM visits_attraction"
     run_sql(sql)
+
+def select_all():
+    visits = []
+
+    sql = "SELECT * FROM visits_attraction"
+    results = run_sql(sql)
+
+    for row in results:
+        user = user_respository.select(row['user_id'])
+        attraction = attraction_respository.select(row['attraction_id'])
+        visit = VisitsAttraction(user, attraction, row['review'], row['id'])
+        visits.append(visit)
+    return visits

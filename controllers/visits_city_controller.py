@@ -11,15 +11,9 @@ import repositories.visits_attraction_repository as visits_attraction_repository
 import repositories.city_repository as city_repository
 import repositories.attraction_repository as attraction_repository
 
-locations_blueprint = Blueprint("countries", __name__)
+visit_cities_blueprint = Blueprint("cities", __name__)
 
-@locations_blueprint.route("/countries")
-def locations():
-    locations = visits_country_repository.select_all() # NEW
-    return render_template("locations/index.html", locations = locations)
-
-@locations_blueprint.route("/locations/<id>")
-def show(id):
-    location = location_repository.select(id)
-    users = location_repository.users(location)
-    return render_template("locations/show.html", location=location, users=users)
+@visit_cities_blueprint.route("/cities")
+def cities():
+    cities = city_repository.select_all()
+    return render_template("cities/index.html", cities = cities)
