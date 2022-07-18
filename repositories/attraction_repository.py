@@ -24,3 +24,13 @@ def select(id):
     if result is not None:
         attraction = Attraction(result['name'], result['category'], result['id'] )
     return attraction
+
+def select_all():
+    attractions = []
+    sql = "SELECT * FROM attractions"
+    results = run_sql(sql)
+
+    for row in results:
+        attraction = Attraction(row['name'],row["attraction_cat"], row['country_id'],row["city_id"], row['id'])
+        attractions.append(attraction)
+    return attractions
