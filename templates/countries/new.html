@@ -3,18 +3,22 @@
 {% block content %}
 <h1>Locations</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th>Category</th>
-  </tr>
-  {% for country in countries %}
-  <tr>
-    <td><a href="/countries/{{ country.id }}"> {{country.name}} </a></td>
-    <td>|</td>
-    <td>{{ country.category }}</td>
-  </tr>
-  {% endfor %}
-</table>
+<form action="/countries" method="post">
+    </div>
+    <div>
+    <label for="country_name">New country name</label>
+    <input type="text" name="country_name"  id="country_name">
+    </div>
+    <div>
+    <label for="continent">Select a Continent</label>
+    <select name="continent" id="continent">
+        <option value="Europe">Europe</option>
+        <option value="Asia">Asia</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+        <option value="Australia">Australia</option>
+        <option value="Oceania">Oceania</option>
+    </select>
+    <button>Submit</button>
+</form>
 {% endblock  %}

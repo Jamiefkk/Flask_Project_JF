@@ -33,3 +33,4 @@ def select(id):
         row = result[0]
         country = Country(row['name'], row['category'], row['id'])
     return country
+

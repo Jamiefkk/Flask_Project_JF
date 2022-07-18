@@ -12,12 +12,12 @@ import repositories.visits_attraction_repository as visits_attraction_repository
 import repositories.city_repository as city_repository
 import repositories.attraction_repository as attraction_repository
 
-visit_cities_blueprint = Blueprint("cities", __name__)
+visit_cities_blueprint = Blueprint("/cities", __name__)
 
 @visit_cities_blueprint.route("/cities")
 def cities():
     cities = city_repository.select_all()
-    return render_template("cities/index.html", cities = cities)
+    return render_template("/cities/index.html", cities = cities)
 
 @visit_cities_blueprint.route("/cities/new", methods = ["GET"])
 def new_city():
