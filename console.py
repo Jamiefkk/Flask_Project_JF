@@ -26,6 +26,9 @@ country_repository.delete_all()
 user1 = User('Samwise Gamgee')
 user_repository.save(user1)
 
+user2 = User('Bob Cratchit')
+user_repository.save(user2)
+
 country1 = Country("Ireland", "Europe")
 country_repository.save(country1)
 
@@ -38,13 +41,19 @@ attraction_repository.save(attraction1)
 # attraction2 = Attraction("The Burren", "Cliff", country1, None)
 # attraction_repository.save(attraction2)
 
-visit1 = VisitsCountry(user1, country1, '5 stars')
+visit1 = VisitsCountry(user1, country1, '5 stars', "Visited")
 visits_country_repository.save(visit1)
 
-visit2 = VisitsCity(user1, city1, '6 stars')
+visit2 = VisitsCity(user1, city1, '6 stars', "Visited")
 visits_city_respository.save(visit2)
 
-visit3 = VisitsAttraction(user1, attraction1, '7 stars')
+visit3 = VisitsAttraction(user1, attraction1, '7 stars', "Visited")
 visits_attraction_repository.save(visit3)
+
+visit4 = VisitsAttraction(user2, attraction1, None, "Want to visit")
+visits_attraction_repository.save(visit4)
+
+visit5 = VisitsCity(user2, city1, None, "Want to visit")
+visits_city_respository.save(visit5)
 
 pdb.set_trace()

@@ -35,19 +35,22 @@ CREATE TABLE visits_country(
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     country_id INT NOT NULL REFERENCES countries(id) ON DELETE CASCADE,
-    review TEXT
+    review TEXT,
+    visited TEXT
 );
 
 CREATE TABLE visits_city (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
-    review TEXT
+    review TEXT,
+    visited TEXT
 );
 
 CREATE TABLE visits_attraction (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     attraction_id INT NOT NULL REFERENCES attractions(id) ON DELETE CASCADE,
-    review TEXT
+    review TEXT,
+    visited TEXT
 );

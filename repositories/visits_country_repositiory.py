@@ -7,8 +7,8 @@ from models.user import User
 from db.run_sql import run_sql
 
 def save(visit):
-    sql = "INSERT INTO visits_country ( user_id, country_id, review) VALUES ( %s, %s, %s) RETURNING id"
-    values = [visit.user.id, visit.country.id, visit.review]
+    sql = "INSERT INTO visits_country ( user_id, country_id, review, visited) VALUES ( %s, %s, %s, %s) RETURNING id"
+    values = [visit.user.id, visit.country.id, visit.review, visit.visited]
     results = run_sql( sql, values )
     visit.id = results[0]['id']
     return visit
