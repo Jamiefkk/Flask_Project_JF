@@ -52,5 +52,5 @@ CREATE TABLE visits_attraction (
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     attraction_id INT NOT NULL REFERENCES attractions(id) ON DELETE CASCADE,
     review TEXT,
-    visited TEXT
+    visited TEXT NOT NULL
 );

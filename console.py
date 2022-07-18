@@ -38,8 +38,8 @@ city_repository.save(city1)
 attraction1 = Attraction("Kilkenny Castle", "Castle", city1.country, city1)
 attraction_repository.save(attraction1)
 
-# attraction2 = Attraction("The Burren", "Cliff", country1, None)
-# attraction_repository.save(attraction2)
+attraction2 = Attraction("The Burren", "Cliff", country1, None)
+attraction_repository.save(attraction2)
 
 visit1 = VisitsCountry(user1, country1, '5 stars', "Visited")
 visits_country_repository.save(visit1)
@@ -55,5 +55,8 @@ visits_attraction_repository.save(visit4)
 
 visit5 = VisitsCity(user2, city1, None, "Want to visit")
 visits_city_respository.save(visit5)
+
+trip = user_repository.locations_countries(user1)
+print(trip)
 
 pdb.set_trace()
