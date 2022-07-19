@@ -40,9 +40,11 @@ def show(id):
     cities = city_repository.select(id)
     attractions = attraction_repository.attractions_in_cities(id)
     users = attraction_repository.users(cities)
-    return render_template("cities/show.html", cities=cities, users=users, attractions=attractions)
+    visits = visits_city_respository.select_all_from_city(id)
+    return render_template("cities/show.html", cities=cities, users=users, attractions=attractions, visits=visits)
 
 @visit_cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
 def delete(id):
     city_repository.delete(id)
     return redirect("/cities")
+

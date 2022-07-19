@@ -6,6 +6,11 @@
 <p>Country: {{ cities.country.name }}</p>
 
 <h3>Visited by:</h3>
+<p>
+    {% for visit in visits %}
+        {{ visit.user }} : {{ visit.review }}
+    {% endfor %}
+</p>
 
 <ul>
     {% for attraction in attractions  %}
