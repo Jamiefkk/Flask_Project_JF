@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{cities.name}} </h1>
+
+<p>Country: {{ cities.country.name }}</p>
+
+<h3>Visited by:</h3>
+
+<ul>
+    {% for user in users  %}
+    <li>{{user.name}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
