@@ -52,3 +52,16 @@ def delete(id):
     sql = "DELETE FROM attractions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def attractions_in_cities(city_id):
+    attractions = []
+
+    sql = "SELECT attractions.* FROM attractions WHERE city_id = %s"
+    values = [city_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        attraction = Attraction(row['name'],row['attraction_cat'], row['id'])
+        attractions.append(attraction)
+
+    return attractions

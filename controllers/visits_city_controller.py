@@ -38,6 +38,6 @@ def create_city():
 @visit_cities_blueprint.route("/cities/<id>")
 def show(id):
     cities = city_repository.select(id)
-    attractions = attraction_repository.select(id)
+    attractions = attraction_repository.attractions_in_cities(id)
     users = attraction_repository.users(cities)
-    return render_template("cities/show.html", cities=cities, users=users)
+    return render_template("cities/show.html", cities=cities, users=users, attractions=attractions)
