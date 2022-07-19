@@ -42,8 +42,8 @@ def create_country():
 def show(id):
     country = country_repository.select(id)
     cities = city_repository.cities_in_countries(id)
-    # attractions = attraction_repository.attractions_in_cities(id)
+    attractions = attraction_repository.attractions_in_countries(id)
     # users = attraction_repository.users(cities)
-    return render_template("countries/show.html", country=country, cities=cities)
+    return render_template("countries/show.html", country=country, cities=cities, attractions=attractions)
 
 

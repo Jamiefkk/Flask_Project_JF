@@ -65,3 +65,16 @@ def attractions_in_cities(city_id):
         attractions.append(attraction)
 
     return attractions
+
+def attractions_in_countries(city_id):
+    attractions = []
+
+    sql = "SELECT * FROM attractions WHERE country_id = %s AND city_id IS NULL"
+    values = [city_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        attraction = Attraction(row['name'],row['attraction_cat'], row['id'])
+        attractions.append(attraction)
+
+    return attractions
