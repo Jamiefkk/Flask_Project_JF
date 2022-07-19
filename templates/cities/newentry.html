@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>City Review</h1>
+
+<form action="/cities/newentry" method="post">
+</div>
+<label for="user_id">Select a User</label>
+<select name="user_id" id="user_id">
+    {% for user in users %}
+    <option value="{{ user.id }}">{{ user.name }}</option>
+    {% endfor %}
+</select>
+</div>
+</div>
+<label for="city_id">Select a City</label>
+<select name="city_id" id="city_id">
+    {% for city in cities %}
+    <option value="{{ city.id }}">{{ city.name }}</option>
+    {% endfor %}
+</select>
+</div>
+<div>
+<div>
+<label for="review">Review</label>
+<input type="text" name="review"  id="review">
+<button>Submit</button>
+</div>
+
+</form>
+
+{% endblock  %}

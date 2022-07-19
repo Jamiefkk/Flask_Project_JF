@@ -48,3 +48,22 @@ def delete(id):
     city_repository.delete(id)
     return redirect("/cities")
 
+@visit_cities_blueprint.route("/cities/newentry", methods=['GET'])
+def new_city_review():
+    users = user_repository.select_all()
+    cities = city_repository.select_all()
+    return render_template("cities/newentry.html", users = users, cities = cities)
+
+
+@visit_cities_blueprint.route("/cities/newentry",  methods=['POST'])
+def create_city_review():
+    user_id = request.form['user_id']
+    city_id = request.form['city_id']
+    review = request.form['review']
+    user = user_repository.select(user_id)
+    city = city_repository.select(city_id)
+  
+    visit = VisitsCity(user, city, review, visited = "Visited")
+    visits_city_respository.save(visit)
+    return redirect('/cities')
+

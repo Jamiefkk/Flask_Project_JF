@@ -8,7 +8,7 @@
 <h3>Reviewed by:</h3>
 <p>
     {% for visit in visits %}
-        <p>{{ visit.user[0][1] }} : {{ visit.review }}</p>
+        <p>{{ visit.user.name }} : {{ visit.review }}</p>
     {% endfor %}
 </p>
 

@@ -26,7 +26,8 @@ def select(id):
     user = None
     sql = "SELECT * FROM users WHERE id = %s"
     values = [id]
-    user = run_sql(sql, values)
+    results = run_sql(sql, values)[0]
+    user = User(results[1], results[0])
     return user
 
 def delete_all():

@@ -9,7 +9,7 @@ def save(visit):
     sql = "INSERT INTO visits_city ( user_id, city_id, review, visited) VALUES ( %s, %s, %s, %s) RETURNING id"
     values = [visit.user.id, visit.city.id, visit.review, visit.visited]
     results = run_sql( sql, values )
-    visit.id = results[0]['id']
+    visit.id = results[0][0]
     return visit
 
 def delete_all():
