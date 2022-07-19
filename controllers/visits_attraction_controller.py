@@ -45,3 +45,7 @@ def show(id):
     users = attraction_repository.users(attractions)
     return render_template("attractions/show.html", attractions=attractions, users=users)
 
+@visit_attractions_blueprint.route("/attractions/<id>/delete", methods=["POST"])
+def delete(id):
+    attraction_repository.delete(id)
+    return redirect("/attractions")

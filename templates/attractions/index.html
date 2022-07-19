@@ -14,6 +14,11 @@
     <td><a href="/attractions/{{ attraction.id }}"> {{attraction.name}} </a></td>
     <td>|</td>
     <td>{{ attraction.attraction_cat }}</td>
+    <td>|</td>
+    <td><form action="/attractions/{{ attraction.id }}/delete" method="post">
+      <button>Delete</button>
+  
+  </form></td>
   </tr>
   {% endfor %}
 </table>

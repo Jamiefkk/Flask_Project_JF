@@ -47,3 +47,8 @@ def users(attraction):
         users.append(user)
 
     return users
+
+def delete(id):
+    sql = "DELETE FROM attractions WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
