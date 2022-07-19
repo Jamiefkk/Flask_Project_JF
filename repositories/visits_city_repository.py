@@ -19,7 +19,7 @@ def delete_all():
 def select_all_from_city(city):
     visits = []
 
-    sql = "SELECT * FROM visits_city WHERE city_id = %s"
+    sql = "SELECT * FROM visits_city WHERE city_id = %s AND review IS NOT NULL"
     values = [city]
     results = run_sql(sql, values)
 
