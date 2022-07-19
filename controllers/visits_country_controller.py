@@ -31,14 +31,19 @@ def new_country():
     return render_template("countries/new.html", countries = countries, users = users)
 
 @visit_countries_blueprint.route("/countries",  methods=['POST'])
-def create_city():
+def create_country():
     country_name = request.form['country_name']
     continent = request.form['continent']
     country = Country(country_name, continent)
     country_repository.save(country)
     return redirect('/countries')
 
-
-
+@visit_countries_blueprint.route("/countries/<id>")
+def show(id):
+    country = country_repository.select(id)
+    cities = city_repository.cities_in_countries(id)
+    # attractions = attraction_repository.attractions_in_cities(id)
+    # users = attraction_repository.users(cities)
+    return render_template("countries/show.html", country=country, cities=cities)
 
 

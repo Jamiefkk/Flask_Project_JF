@@ -36,3 +36,17 @@ def select(id):
         country = country_repository.select(row['country_id'])
         city = City(row['name'], country, row['id'])
     return city
+
+def cities_in_countries(country_id):
+    cities = []
+
+    sql = "SELECT cities.* FROM cities WHERE country_id = %s"
+    values = [country_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        country = country_repository.select(row['country_id'])
+        city = City(row['name'],country, row['id'])
+        cities.append(city)
+
+    return cities
