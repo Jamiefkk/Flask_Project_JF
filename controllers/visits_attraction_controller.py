@@ -49,3 +49,22 @@ def show(id):
 def delete(id):
     attraction_repository.delete(id)
     return redirect("/attractions")
+
+@visit_attractions_blueprint.route("/attractions/newentry", methods=['GET'])
+def new_attraction_form():
+    users = user_repository.select_all()
+    attractions = attraction_repository.select_all()
+    return render_template("attractions/newentry.html", users = users, attractions = attractions)
+
+
+@visit_attractions_blueprint.route("/attractions/newentry",  methods=['POST'])
+def create_attraction_review():
+    user_id = request.form['user_id']
+    attraction_id = request.form['attraction_id']
+    review = request.form['review']
+    user = user_repository.select(user_id)
+    attraction = attraction_repository.select(attraction_id)
+    visit = VisitsAttraction(user, attraction, review, visited = "Visited")
+    breakpoint()
+    visits_attraction_repository.save(visit)
+    return redirect('/attractions')

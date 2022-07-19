@@ -29,3 +29,17 @@ def select_all():
         visit = VisitsAttraction(user, attraction, row['review'], row['id'])
         visits.append(visit)
     return visits
+
+def select_all_from_attractions(attraction):
+    visits = []
+
+    sql = "SELECT * FROM visits_attraction WHERE attraction_id = %s AND review IS NOT NULL"
+    values = [attraction]
+    results = run_sql(sql, values)
+
+    for row in results:
+        user = user_respository.select(row['user_id'])
+        attraction = attraction_respository.select(row['country_id'])
+        visit = VisitsAttraction(user, attraction, row['review'], row['id'])
+        visits.append(visit)
+    return visits

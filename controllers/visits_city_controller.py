@@ -62,7 +62,6 @@ def create_city_review():
     review = request.form['review']
     user = user_repository.select(user_id)
     city = city_repository.select(city_id)
-
     visit = VisitsCity(user, city, review, visited = "Visited")
     visits_city_respository.save(visit)
     return redirect('/cities')
