@@ -19,4 +19,10 @@ Places to visit:
     {% endfor %}
 </ul>
 
+{{ visits }}
+<p>
+    {% for visit in visits %}
+        <p>{{ visit.user.name }} : {{ visit.review }}</p>
+    {% endfor %}
+</p>
 {% endblock %}

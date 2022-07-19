@@ -43,10 +43,29 @@ def show(id):
     country = country_repository.select(id)
     cities = city_repository.cities_in_countries(id)
     attractions = attraction_repository.attractions_in_countries(id)
-    # users = attraction_repository.users(cities)
-    return render_template("countries/show.html", country=country, cities=cities, attractions=attractions)
+    visits = visits_country_repository.select_all_from_country(id)
+    return render_template("countries/show.html", country=country, cities=cities, attractions=attractions, visits = visits)
 
 @visit_countries_blueprint.route("/countries/<id>/delete", methods=["POST"])
 def delete(id):
     country_repository.delete(id)
     return redirect("/countries")
+
+@visit_countries_blueprint.route("/countries/newentry", methods=['GET'])
+def new_city_review():
+    users = user_repository.select_all()
+    countries = country_repository.select_all()
+    return render_template("countries/newentry.html", users = users, countries = countries)
+
+
+@visit_countries_blueprint.route("/countries/newentry",  methods=['POST'])
+def create_city_review():
+    user_id = request.form['user_id']
+    country_id = request.form['country_id']
+    review = request.form['review']
+    user = user_repository.select(user_id)
+    country = city_repository.select(country_id)
+
+    visit = VisitsCountry(user, country, review, visited = "Visited")
+    visits_country_repository.save(visit)
+    return redirect('/countries')
