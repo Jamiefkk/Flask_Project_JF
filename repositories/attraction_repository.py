@@ -22,7 +22,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        attraction = Attraction(result['name'], result['category'], result['id'] )
+        attraction = Attraction(result['name'], result['attraction_cat'], result['id'] )
     return attraction
 
 def select_all():
@@ -34,3 +34,16 @@ def select_all():
         attraction = Attraction(row['name'],row["attraction_cat"], row['country_id'],row["city_id"], row['id'])
         attractions.append(attraction)
     return attractions
+
+def users(attraction):
+    users = []
+
+    sql = "SELECT users.* FROM users INNER JOIN visits_attraction ON visits_attraction.user_id = users.id WHERE attraction_id = %s"
+    values = [attraction.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        user = User(row['name'], row['id'])
+        users.append(user)
+
+    return users

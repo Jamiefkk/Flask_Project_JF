@@ -45,3 +45,16 @@ def locations_countries(user):
         locations.append(location)
 
     return locations
+
+def locations_attractions(user):
+    locations = []
+
+    sql = "SELECT attractions.* FROM attractions INNER JOIN visits_attraction ON visits_attraction.attraction_id = attraction.id WHERE user_id = %s"
+    values = [user.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        location = Attraction(row['name'], row['attraction_cat'], row['id'])
+        locations.append(location)
+
+    return locations

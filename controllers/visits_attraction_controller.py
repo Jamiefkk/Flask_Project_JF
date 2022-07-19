@@ -39,3 +39,9 @@ def create_attraction():
     attraction_repository.save(attraction)
     return redirect('/attractions')
 
+@visit_attractions_blueprint.route("/attractions/<id>")
+def show(id):
+    attractions = attraction_repository.select(id)
+    users = attraction_repository.users(attractions)
+    return render_template("attractions/show.html", attractions=attractions, users=users)
+

@@ -23,14 +23,15 @@
 <div>
 <label for="attraction_name">New attraction name</label>
 <input type="text" name="attraction_name"  id="attraction_name">
-<!-- <label for="attraction_cat">Category</label>
-<input type="text" name="attraction_name"  id="attraction_name"> -->
 
 
 <select name="attraction_cat" id="attraction_cat">
-    {% for attractions in attractions %}
-    <option value="{{ attractions.attraction_cat }}">{{ attractions.attraction_cat }}</option>
-    {% endfor %}
+    <option value="Castle">Castle</option>
+    <option value="Cliff">Cliff</option>
+    <option value="Mountain">Mountain</option>
+    <option value="Cathedral/Church">Cathedral/Church</option>
+    <option value="Lake/River">Lake/River</option>
+    <option value="Waterfall">Waterfall</option>
 </select>
 
 
