@@ -13,7 +13,9 @@
   <tr>
     <td><a href="/cities/{{ city.id }}"> {{city.name}} </a></td>
     <td>{{ city.country.name }}</td>
-    <td>
+    <td>|</td>
+    <td><form action="/cities/{{ city.id }}/delete" method="post">
+      <button>Delete</button></form><td>
     </td>
   </tr>
   {% endfor %}
