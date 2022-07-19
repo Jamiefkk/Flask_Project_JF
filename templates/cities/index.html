@@ -12,9 +12,11 @@
   {% for city in cities %}
   <tr>
     <td><a href="/cities/{{ city.id }}"> {{city.name}} </a></td>
-    <td>|</td>
-    <td>{{ city.country }}</td>
+    <td>{{ city.country.name }}</td>
+    <td>
+    </td>
   </tr>
   {% endfor %}
 </table>
+<a href="/cities/new">Add new city</a>
 {% endblock  %}

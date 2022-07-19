@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Locations</h1>
+
+<form action="/attractions" method="post">
+<div>
+<label for="country">Select a Country</label>
+<select name="country" id="country">
+  {% for country in countries %}
+  <option value="{{ country.id }}">{{ country.name }}</option>
+  {% endfor %}
+</select>
+</div>
+<label for="city">Select a City</label>
+<select name="city" id="city">
+    <option value="None">NA</option>
+    {% for city in cities %}
+    <option value="{{ city.id }}">{{ city.name }}</option>
+    {% endfor %}
+</select>
+</div>
+<div>
+<label for="attraction_name">New attraction name</label>
+<input type="text" name="attraction_name"  id="attraction_name">
+<!-- <label for="attraction_cat">Category</label>
+<input type="text" name="attraction_name"  id="attraction_name"> -->
+
+
+<select name="attraction_cat" id="attraction_cat">
+    {% for attractions in attractions %}
+    <option value="{{ attractions.attraction_cat }}">{{ attractions.attraction_cat }}</option>
+    {% endfor %}
+</select>
+
+
+<button>Submit</button>
+</div>
+
+</form>
+
+{% endblock  %}
