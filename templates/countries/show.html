@@ -3,6 +3,21 @@
 {% block content %}
 <h1> {{country.name}} </h1>
 
+{% if visit_status.visited == None %}
+<form action="/countries/{{ country.id }}/visited-want-to-visit" method="post">
+    <button>Not visited</button>
+</form>
+
+{% elif visit_status.visited == "Want to visit" %}
+<form action="/countries/{{ country.id }}/visited-visited" method="post">
+    <button>Want to visit</button>
+</form>
+
+{% else %}
+<form action="/countries/{{ country.id }}/visited-none" method="post">
+    <button>Visited</button>
+</form>
+{% endif %}
 
 <h3>Visited by:</h3>
 Cities to visit:

@@ -6,3 +6,12 @@ class VisitsCountry:
         self.review = review
         self.visited = visited
         self.id = id
+
+    def visit_none(self):
+        self.visited = None
+
+    def visit_want_to_visit(self):
+        self.visited = "Want to visit"
+
+    def visit_visited(self):
+        self.visited = "Visited"
