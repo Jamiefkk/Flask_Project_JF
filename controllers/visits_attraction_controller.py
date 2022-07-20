@@ -43,7 +43,8 @@ def create_attraction():
 def show(id):
     attractions = attraction_repository.select(id)
     users = attraction_repository.users(attractions)
-    return render_template("attractions/show.html", attractions=attractions, users=users)
+    visits = visits_attraction_repository.select_all_from_attractions(id)
+    return render_template("attractions/show.html", attractions=attractions, users=users, visits=visits)
 
 @visit_attractions_blueprint.route("/attractions/<id>/delete", methods=["POST"])
 def delete(id):
@@ -65,6 +66,5 @@ def create_attraction_review():
     user = user_repository.select(user_id)
     attraction = attraction_repository.select(attraction_id)
     visit = VisitsAttraction(user, attraction, review, visited = "Visited")
-    breakpoint()
     visits_attraction_repository.save(visit)
     return redirect('/attractions')

@@ -39,7 +39,7 @@ def select_all_from_attractions(attraction):
 
     for row in results:
         user = user_respository.select(row['user_id'])
-        attraction = attraction_respository.select(row['country_id'])
+        attraction = attraction_respository.select(row['attraction_id'])
         visit = VisitsAttraction(user, attraction, row['review'], row['id'])
         visits.append(visit)
     return visits

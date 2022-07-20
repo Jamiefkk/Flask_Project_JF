@@ -22,7 +22,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        attraction = Attraction(result['name'], result['attraction_cat'], result['id'] )
+        attraction = Attraction(result['name'], result['attraction_cat'], id = result['id'] )
     return attraction
 
 def select_all():

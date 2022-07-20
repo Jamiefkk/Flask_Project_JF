@@ -5,8 +5,12 @@
 
 <p>Category: {{ attractions.attraction_cat }}</p>
 
-<h3>Visited by:</h3>
-
+<h3>Reviewed by:</h3>
+<p>
+    {% for visit in visits %}
+        <p>{{ visit.user.name }} : {{ visit.review }}</p>
+    {% endfor %}
+</p>
 <ul>
     {% for user in users  %}
     <li>{{user.name}}</li>
