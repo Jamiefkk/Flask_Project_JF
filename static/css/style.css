@@ -2,7 +2,7 @@ body {
     background: url('/static/images/background.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-    color: #F6F4F3;
+    color: #131b12;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding: 0px;
     margin: 0px;
@@ -67,3 +67,17 @@ nav{
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .form{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .new_form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 0 auto;
+}

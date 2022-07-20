@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Locations</h1>
-
-<form action="/countries" method="post">
-    </div>
-    <div>
-    <label for="country_name">New country name</label>
-    <input type="text" name="country_name"  id="country_name">
-    </div>
-    <div>
-    <label for="continent">Select a Continent</label>
-    <select name="continent" id="continent">
-        <option value="Europe">Europe</option>
-        <option value="Asia">Asia</option>
-        <option value="North America">North America</option>
-        <option value="South America">South America</option>
-        <option value="Australia">Australia</option>
-        <option value="Oceania">Oceania</option>
-    </select>
-    <button>Submit</button>
-</form>
+<section id="new_form">
+    <h1>New Country</h1>
+    <form action="/countries" method="post">
+        </div>
+        <div>
+        <label for="country_name">New country name</label>
+        <input type="text" name="country_name"  id="country_name">
+        </div>
+        <div>
+        <label for="continent">Select a Continent</label>
+        <select name="continent" id="continent">
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="North America">North America</option>
+            <option value="South America">South America</option>
+            <option value="Australia">Australia</option>
+            <option value="Oceania">Oceania</option>
+        </select>
+        <button>Submit</button>
+    </form>
+</section>
 {% endblock  %}
