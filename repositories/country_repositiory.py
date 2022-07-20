@@ -2,6 +2,10 @@ from db.run_sql import run_sql
 
 from models.country import Country
 from models.user import User
+import repositories.visits_country_repositiory as visits_country_repository
+import repositories.user_repository as user_repository
+from models.visits_country import VisitsCountry
+from repositories.user_repository import User
 
 def save(country):
     sql = "INSERT INTO countries(name, category) VALUES ( %s, %s ) RETURNING id"
