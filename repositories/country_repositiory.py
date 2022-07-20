@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from models.country import Country
 from models.user import User
 import repositories.visits_country_repositiory as visits_country_repository
+import repositories.country_repositiory as country_repository
 import repositories.user_repository as user_repository
 from models.visits_country import VisitsCountry
 from repositories.user_repository import User
@@ -12,6 +13,11 @@ def save(country):
     values = [country.name, country.category]
     results = run_sql( sql, values )
     country.id = results[0]['id']
+    new_country = country_repository.select(country.id)
+    user = user_repository.select(1)
+    visit = VisitsCountry(user, new_country, None, "Not visited")
+    visits_country_repository.save(visit)
+
     return country
 
 def delete_all():
