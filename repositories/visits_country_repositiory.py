@@ -33,7 +33,7 @@ def select_all_from_country(country):
 
 def update(visit):
     sql = "UPDATE visits_country SET ( user_id, country_id, review, visited ) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [visit.user.id, visit.country.id, visit.review, visit.visited]
+    values = [visit.user.id, visit.country.id, visit.review, visit.visited, visit.id]
     run_sql(sql, values)
 
 def select(id):
@@ -60,11 +60,11 @@ def select_all_from_country_for_user_1(country):
 def select_visit(id):
     visits_country = None
     sql = "SELECT * FROM visits_country WHERE country_id = %s AND user_id = 1"
-    values = id
+    values = [id]
     result = run_sql(sql, values)
     if result:
         row = result[0]
         country = country_respository.select(row['country_id'])
         user = user_respository.select(row['user_id'])
-        visits_country = VisitsCountry(user, country, row['id'], row['review'], row['visited'])
+        visits_country = VisitsCountry(user, country, row['review'], row['visited'],row['id'])
     return visits_country

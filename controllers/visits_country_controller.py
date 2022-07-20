@@ -71,7 +71,7 @@ def mark_none(id):
     country_visit = visits_country_repository.select_visit(id)
     country_visit.visit_none()
     visits_country_repository.update(country_visit)
-    return redirect("/countries")
+    return redirect(f"/countries/{id}")
 
 
 @visit_countries_blueprint.route("/countries/<id>/visited-want-to-visit", methods=["POST"])
@@ -79,11 +79,11 @@ def mark_want_to_visit(id):
     country_visit = visits_country_repository.select_visit(id)
     country_visit.visit_want_to_visit()
     visits_country_repository.update(country_visit)
-    return redirect("/countries")
+    return redirect(f"/countries/{id}")
 
 @visit_countries_blueprint.route("/countries/<id>/visited-visited", methods=["POST"])
 def mark_visited(id):
     country_visit = visits_country_repository.select_visit(id)
     country_visit.visit_visited()
     visits_country_repository.update(country_visit)
-    return redirect("/countries")
+    return redirect(f"/countries/{id}")
