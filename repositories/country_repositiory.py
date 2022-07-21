@@ -17,7 +17,6 @@ def save(country):
     user = user_repository.select(1)
     visit = VisitsCountry(user, new_country, None, "Not visited")
     visits_country_repository.save(visit)
-
     return country
 
 def delete_all():
